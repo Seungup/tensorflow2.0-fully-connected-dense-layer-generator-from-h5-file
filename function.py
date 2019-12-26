@@ -5,7 +5,7 @@
 
 
 import tensorflow as tf
-
+import h5py
 
 # In[8]:
 
@@ -75,7 +75,10 @@ def getModelLayersConfigNormalization(file):
         for j in range(model_lenght):
             value = model_layer_config[i][j][1]
             if(value == None):
-                NoneType_index.append([i, j, model_layer_config[i][j]])
+                NoneType_index.append([i, 
+                                       j, 
+                                       model_layer_config[i][j]
+                                      ])
 
     for data in NoneType_index:
         i, j, removeData = data
@@ -84,3 +87,9 @@ def getModelLayersConfigNormalization(file):
     
     return model_layer_config
 
+def getOptimazer(file):
+    path = file
+    f = h5py.File(path, 'r')
+    f_keys = list(f.keys())
+    f_keys_keys = list(f[f_keys[1]].keys())
+    return f_keys_keys[0]
