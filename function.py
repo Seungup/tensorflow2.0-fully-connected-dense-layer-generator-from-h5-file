@@ -333,4 +333,23 @@ def drawingLines(img, radius,*data):
             pass
 
     return img
+
+# Data Sequence n_neuron, n_sction_number
+def getAllNeurons(img, img_w, img_h, number_of_sction, data):
+    tmp_list = []
     
+    for i in range(len(data)):
+        tmp_list.append(data[i])
+    
+    return_list = []
+    for i in range(len(tmp_list)):
+        data = getNeuronPostion(img_w=img_w,
+                                         img_h=img_h,
+                                         number_of_neuron=tmp_list[i][0],
+                                         number_of_section=number_of_sction,
+                                         section=tmp_list[i][1])
+        return_list.append(data)
+    
+    
+    return return_list
+        
