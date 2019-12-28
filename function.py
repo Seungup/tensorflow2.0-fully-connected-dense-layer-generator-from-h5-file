@@ -6,7 +6,8 @@
 
 import tensorflow as tf
 import h5py
-
+import cv2
+import numpy as np
 # In[8]:
 
 
@@ -233,3 +234,103 @@ def getLayersInfo(path):
                     return_list.append(None)
     finally:
         return return_list
+    
+    
+def getBlankImage(height, width, dimension):
+    return np.zeros((height, width, dimension), np.uint8)
+
+def showImage(img):
+    cv2.imshow('img', img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    
+def getArrowStartPoint(circle_center, radius):
+    x, y = circle_center
+    return (x-radius, y)
+
+def getArrowEndPoint(circle_center, radius):
+    x, y = circle_center
+    return (x+radius, y)
+
+def getSectionWight(section_num, section, wight):
+    
+    if (wight % section_num == 0):
+        new_w = (wight / section_num)
+    else:
+        new_w = int(wight / section_num)
+    
+    if (new_w % 2 == 0):
+        move_w = (new_w * (section-1)) + (new_w / 2)
+    else:
+        move_w = (new_w * (section-1)) + int(new_w / 2)
+        
+    return move_w
+
+def getSectionHeigh(h, num):
+    
+    if (h % num == 0):  
+        distance = h / num
+    else:
+        if (num >= int(h / num)):
+            distance = int(h / num)
+        else:
+            distance = int(h / num) - 1
+            
+    blank_piexl = (h - (distance * num))
+
+    sub_h = h - blank_piexl    
+    add_h = 0
+    return_h_list = []
+    
+    while(True):
+        if(add_h == sub_h):
+            break
+        else:
+            return_h_list.append(add_h + (blank_piexl / 2))
+            add_h = add_h + distance
+    
+    return return_h_list
+
+def drawingNerons(img, data, radius=1, color=(255, 255, 255)):
+    for i in data:
+        img = cv2.circle(img=img,
+                         center=i,
+                         radius=radius,
+                         color=color)
+    return img
+
+def getNeuronPostion(img_w, img_h, number_of_section, section, number_of_neuron):
+    
+    x = getSectionWight(wight=img_w, 
+                        section_num=number_of_section, 
+                        section=section)
+    
+    
+    y = getSectionHeigh(h=img_h, 
+                        num=number_of_neuron)
+    circe_center = []
+    for i in y:
+        data = (int(x), int(i + ((img_h - y[len(y) - 1]) / 2)))
+        circe_center.append(data)
+    return circe_center
+
+def drawingLines(img, radius,*data):
+    
+    values = []
+    for now_data in range(len(data)):
+        values.append(data[now_data])
+    
+
+    for a in range(len(values)):
+        if (len(values)-1 >= (a+1)):
+            for i in values[a]:
+                for j in values[a+1]:
+                    img = cv2.line(img=img,
+                                   pt1=getArrowEndPoint(i, radius),
+                                   pt2=getArrowStartPoint(j, radius),
+                                   color=(255, 255, 0))
+        else:
+            pass
+
+    return img
+    
