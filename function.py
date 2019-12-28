@@ -1,14 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import tensorflow as tf
 import h5py
 import cv2
 import numpy as np
-# In[8]:
 
 
 def getModelConfig(file):
@@ -149,6 +142,7 @@ def printLayer(path):
 
 
             else:
+                # unknow part need update this part
                 print("XXXXXXXXXXXX")
                 print(f"Layer_{i} | {data[i][3][0]} : {data[i][3][1]}")
                 
@@ -236,7 +230,7 @@ def getLayersInfo(path):
         return return_list
     
     
-def getBlankImage(height, width, dimension):
+def getBlankImage(height, width, dimension=3):
     return np.zeros((height, width, dimension), np.uint8)
 
 def showImage(img):
@@ -296,7 +290,8 @@ def drawingNerons(img, data, radius=1, color=(255, 255, 255)):
         img = cv2.circle(img=img,
                          center=i,
                          radius=radius,
-                         color=color)
+                         color=color,
+                         thickness=-1)
     return img
 
 def getNeuronPostion(img_w, img_h, number_of_section, section, number_of_neuron):
@@ -314,7 +309,7 @@ def getNeuronPostion(img_w, img_h, number_of_section, section, number_of_neuron)
         circe_center.append(data)
     return circe_center
 
-def drawingLines(img, radius,*data):
+def drawingLines(img, data, radius=1):
     
     values = []
     for now_data in range(len(data)):
@@ -352,4 +347,30 @@ def getAllNeurons(img, img_w, img_h, number_of_sction, data):
     
     
     return return_list
-        
+
+def getDenseList(path):
+    model_data = getLayersInfo(path)
+    dense_list = []
+    for i in range(len(model_data)):
+        if i == 0:
+            pass
+        else:
+            data = model_data[i]['layer']
+            if data == "Dense":
+                getData = ( model_data[i]['neruons'], i)
+                dense_list.append(getData)
+    return dense_list
+
+def save(img):
+    cv2.imwrite("saved.png", img)
+    
+def model_neurons_position(data, max_num=50, max2min=15):
+    return_list = []
+    for i in range(len(data)):
+        if(data[i][0] > max_num):
+            num, sec = data[i]
+            num = max2min
+            return_list.append([num, sec])
+        else:
+            return_list.append(list(data[i]))
+    return return_list
