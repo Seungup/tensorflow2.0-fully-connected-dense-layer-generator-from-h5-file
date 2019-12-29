@@ -11,6 +11,10 @@ Advance preparation
 
 how to use
 -------------
+#### just lunch the .ipny file and click it that's it
+* * *
+When you want to modify code
+-------------
 #### If you want to more big size of result or neurons radius, you can modified to this section
 
 ##### File PATH = function_test.ipynb
