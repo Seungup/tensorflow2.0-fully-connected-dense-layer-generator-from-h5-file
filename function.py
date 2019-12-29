@@ -2,7 +2,7 @@ import tensorflow as tf
 import h5py
 import cv2
 import numpy as np
-
+from tqdm import tqdm
 
 def getModelConfig(file):
     return tf.keras.models.load_model(file).get_config()
@@ -295,8 +295,6 @@ def drawingNerons(img, data, radius=1, color=(255, 255, 255)):
     return img
 
 
-def getDropoutPostion():
-    ...
 
 def getNeuronPostion(img_w, img_h, number_of_section, section, number_of_neuron):
 
@@ -320,7 +318,7 @@ def drawingLines(img, data, radius=1):
 
     for a in range(len(values)):
         if (len(values)-1 >= (a+1)):
-      
+                
                 for i in values[a]:                    
                         for j in values[a+1]:
 
@@ -386,7 +384,7 @@ def getLayerList(path):
 def save(img):
     cv2.imwrite("saved.png", img)
     
-def model_neurons_position(data, max_num=50, max2min=18):
+def model_neurons_position(data, max_num=130, max2min=18):
     return_list = []
     for i in range(len(data)):
         if(data[i][0] > max_num):
@@ -475,7 +473,7 @@ def drawDropoutLine(img, neuron_postion, radius, dense_list):
     
     location_of_dropout = findDropoutPart(dense_list)
     
-    for i in range(len(location_of_dropout)):
+    for i in tqdm(range(len(location_of_dropout)), "Dropout to Dense"):
         new_postion = (neuron_postion[location_of_dropout[i][0]], 
                        neuron_postion[location_of_dropout[i][1]])
         
@@ -510,7 +508,7 @@ def drawDenseLine(img, neuron_postion, radius, dense_list):
     
     location_of_dense = findDensePart(dense_list)
     
-    for i in range(len(location_of_dense)):
+    for i in tqdm(range(len(location_of_dense)), "Dense to Dense"):
         first = location_of_dense[i][0]
         second = location_of_dense[i][1]
         
@@ -518,6 +516,6 @@ def drawDenseLine(img, neuron_postion, radius, dense_list):
         
         for j in range(len(new_postion[0])):
             img = drawingLines(img=img, 
-                                        data=new_postion,
-                                        radius=radius)
+                                data=new_postion,
+                                radius=radius)
     return img
