@@ -1,6 +1,6 @@
 Tensorflow Model Picture Generator
 =============
-RESULT PICTURE
+RESULT
 -------------
 ![result](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/saved.png)
 
