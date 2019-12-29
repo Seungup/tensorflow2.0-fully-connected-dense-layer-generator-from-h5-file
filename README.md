@@ -4,8 +4,8 @@ RESULT
 -------------
 ![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/80900687_3043525055871819_3720745626112098304_n.jpg)
 ![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/80458048_3043523079205350_242428497014816768_o.jpg)
-![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/81370305_3043547499202908_3713353506359345152_o.jpg)
 ![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/80840138_3043527135871611_7671651974021906432_o.jpg)
+![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/81370305_3043547499202908_3713353506359345152_o.jpg)
 
 * * *
 
