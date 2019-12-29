@@ -386,7 +386,7 @@ def getDenseList(path):
 def save(img):
     cv2.imwrite("saved.png", img)
     
-def model_neurons_position(data, max_num=129, max2min=18):
+def model_neurons_position(data, max_num=50, max2min=18):
     return_list = []
     for i in range(len(data)):
         if(data[i][0] > max_num):
@@ -455,3 +455,32 @@ def getMnistData():
     mnist = tf.keras.datasets.mnist
     (X_train0, y_train0), (X_test0, y_test0) = mnist.load_data()
     return (X_train0, y_train0), (X_test0, y_test0)
+
+def drawDropoutLine(img, neuron_postion, radius, dense_list):
+    def findDropoutPart(dense_list):
+        a = []
+        for i in range(len(dense_list)):
+            if (dense_list[i][2] == "Dropout"):
+                a.append(i)
+
+        return_list = []
+        for i in range(len(dense_list)):
+            for now_a in range(len(a)):
+                if (i+1 == a[now_a]):
+                    return_data = (i, a[now_a])
+                    return_list.append(return_data)
+
+        return return_list
+    
+    location_of_dropout = findDropoutPart(dense_list)
+    
+    for i in range(len(location_of_dropout)):
+        new_postion = (neuron_postion[location_of_dropout[i][0]], 
+                       neuron_postion[location_of_dropout[i][1]])
+        
+        for j in range(len(new_postion[0])):
+            img = cv2.line(img=img,
+                           pt1= getArrowStartPoint(new_postion[0][j], radius),
+                           pt2= getArrowEndPoint(new_postion[1][j], radius),
+                           color=(255, 0, 255))
+    return img
