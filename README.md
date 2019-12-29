@@ -1,6 +1,10 @@
 Tensorflow Model Picture Generator
 =============
+RESULT PICTURE
+-------------
+![result](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/saved.png)
 
+* * *
 Advance preparation
 -------------
 > 1. tensorflow 2.0 ver
