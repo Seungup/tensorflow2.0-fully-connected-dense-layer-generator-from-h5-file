@@ -364,7 +364,7 @@ def getDenseList(path):
 def save(img):
     cv2.imwrite("saved.png", img)
     
-def model_neurons_position(data, max_num=50, max2min=15):
+def model_neurons_position(data, max_num=100, max2min=50):
     return_list = []
     for i in range(len(data)):
         if(data[i][0] > max_num):
@@ -384,12 +384,12 @@ def getModelWeights(path):
 
 def evaluate(path, test_images, test_labels, verbose):
     optimizer = getOptimazer(path)
-
+    model = tf.keras.models.load_model(path)
     model.compile(optimizer=optimizer,
                   loss='sparse_categorical_crossentropy',
                   metrics=['accuracy'])
  
-    model = tf.keras.models.load_model(path)
+    
     loss, acc = model.evaluate(test_images,  test_labels, verbose=verbose)
     return loss, acc
 
@@ -430,6 +430,6 @@ def draw():
     function.save(img)
     
 def getMnistData():
-    mnist = keras.datasets.mnist
+    mnist = tf.keras.datasets.mnist
     (X_train0, y_train0), (X_test0, y_test0) = mnist.load_data()
     return (X_train0, y_train0), (X_test0, y_test0)
