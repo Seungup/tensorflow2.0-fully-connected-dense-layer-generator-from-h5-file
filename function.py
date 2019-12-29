@@ -359,7 +359,7 @@ def getAllNeurons(img, img_w, img_h, number_of_sction, data):
     
     return return_list
 
-def getDenseList(path):
+def getLayerList(path):
     model_data = getLayersInfo(path)
     dense_list = []
     for i in range(len(model_data)):
@@ -456,21 +456,22 @@ def getMnistData():
     (X_train0, y_train0), (X_test0, y_test0) = mnist.load_data()
     return (X_train0, y_train0), (X_test0, y_test0)
 
+def findDropoutPart(dense_list):
+    a = []
+    for i in range(len(dense_list)):
+        if (dense_list[i][2] == "Dropout"):
+            a.append(i)
+
+    return_list = []
+    for i in range(len(dense_list)):
+        for now_a in range(len(a)):
+            if (i+1 == a[now_a]):
+                return_data = (i, a[now_a])
+                return_list.append(return_data)
+
+    return return_list
+
 def drawDropoutLine(img, neuron_postion, radius, dense_list):
-    def findDropoutPart(dense_list):
-        a = []
-        for i in range(len(dense_list)):
-            if (dense_list[i][2] == "Dropout"):
-                a.append(i)
-
-        return_list = []
-        for i in range(len(dense_list)):
-            for now_a in range(len(a)):
-                if (i+1 == a[now_a]):
-                    return_data = (i, a[now_a])
-                    return_list.append(return_data)
-
-        return return_list
     
     location_of_dropout = findDropoutPart(dense_list)
     
@@ -483,4 +484,40 @@ def drawDropoutLine(img, neuron_postion, radius, dense_list):
                            pt1= getArrowStartPoint(new_postion[0][j], radius),
                            pt2= getArrowEndPoint(new_postion[1][j], radius),
                            color=(255, 0, 255))
+    return img
+
+def findDensePart(dense_List):
+
+    test_list = list(range(len(dense_List)))
+    test_ = []
+    for i in range(len(test_list)):
+        test_.append((i, i+1))
+    
+
+    test_1 = []
+    num = findDropoutPart(dense_List)
+    
+    for i in test_[:-1]:
+        if(i in num):
+            pass
+        else:
+            test_1.append(i)
+            
+    return test_1
+
+
+def drawDenseLine(img, neuron_postion, radius, dense_list):
+    
+    location_of_dense = findDensePart(dense_list)
+    
+    for i in range(len(location_of_dense)):
+        first = location_of_dense[i][0]
+        second = location_of_dense[i][1]
+        
+        new_postion = neuron_postion[first], neuron_postion[second]
+        
+        for j in range(len(new_postion[0])):
+            img = drawingLines(img=img, 
+                                        data=new_postion,
+                                        radius=radius)
     return img
