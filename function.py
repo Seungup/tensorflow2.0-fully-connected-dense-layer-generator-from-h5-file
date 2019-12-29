@@ -384,7 +384,7 @@ def getLayerList(path):
 def save(img):
     cv2.imwrite("saved.png", img)
     
-def model_neurons_position(data, max_num=130, max2min=18):
+def model_neurons_position(data, max_num=130, max2min=30):
     return_list = []
     for i in range(len(data)):
         if(data[i][0] > max_num):
