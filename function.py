@@ -240,11 +240,11 @@ def showImage(img):
     
 def getArrowStartPoint(circle_center, radius):
     x, y = circle_center
-    return (x-radius, y)
+    return (x+radius, y)
 
 def getArrowEndPoint(circle_center, radius):
     x, y = circle_center
-    return (x+radius, y)
+    return (x-radius, y)
 
 def getSectionWight(section_num, section, wight):
     
@@ -294,15 +294,17 @@ def drawingNerons(img, data, radius=1, color=(255, 255, 255)):
                          thickness=-1)
     return img
 
+
+def getDropoutPostion():
+    ...
+
 def getNeuronPostion(img_w, img_h, number_of_section, section, number_of_neuron):
+
+    x = getSectionWight(wight=img_w, section_num=number_of_section, section=section)
+
+
+    y = getSectionHeigh(h=img_h, num=number_of_neuron)
     
-    x = getSectionWight(wight=img_w, 
-                        section_num=number_of_section, 
-                        section=section)
-    
-    
-    y = getSectionHeigh(h=img_h, 
-                        num=number_of_neuron)
     circe_center = []
     for i in y:
         data = (int(x), int(i + ((img_h - y[len(y) - 1]) / 2)))
@@ -318,12 +320,21 @@ def drawingLines(img, data, radius=1):
 
     for a in range(len(values)):
         if (len(values)-1 >= (a+1)):
-            for i in values[a]:
-                for j in values[a+1]:
-                    img = cv2.line(img=img,
-                                   pt1=getArrowEndPoint(i, radius),
-                                   pt2=getArrowStartPoint(j, radius),
-                                   color=(255, 255, 0))
+      
+                for i in values[a]:                    
+                        for j in values[a+1]:
+
+                                if(a == 0):
+                                    img = cv2.line(img=img,
+                                                   pt1=getArrowStartPoint(i, radius),
+                                                   pt2=getArrowEndPoint(j, radius),
+                                                   color=(255, 0, 255))
+
+                                else:
+                                    img = cv2.line(img=img,
+                                                   pt1=getArrowStartPoint(i, radius),
+                                                   pt2=getArrowEndPoint(j, radius),
+                                                   color=(255, 255, 0))
         else:
             pass
 
@@ -356,19 +367,30 @@ def getDenseList(path):
             pass
         else:
             data = model_data[i]['layer']
+            if data == "Flatten":
+                num = model_data[i]['output_shape']
+                getData = (num, i, "Flatten")
+                dense_list.append(getData)
+                
+            if data == "Dropout":
+                num = model_data[i-1]['neruons']
+                getData = (num, i, "Dropout")
+                dense_list.append(getData)
+                
             if data == "Dense":
-                getData = ( model_data[i]['neruons'], i)
+                num = model_data[i]['neruons']
+                getData = (num, i, "Dense")
                 dense_list.append(getData)
     return dense_list
 
 def save(img):
     cv2.imwrite("saved.png", img)
     
-def model_neurons_position(data, max_num=100, max2min=50):
+def model_neurons_position(data, max_num=129, max2min=18):
     return_list = []
     for i in range(len(data)):
         if(data[i][0] > max_num):
-            num, sec = data[i]
+            num, sec, _ = data[i]
             num = max2min
             return_list.append([num, sec])
         else:
