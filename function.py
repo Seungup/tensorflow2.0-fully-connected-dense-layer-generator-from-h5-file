@@ -328,7 +328,7 @@ def drawingLines(img, data, radius=1):
                                     img = cv2.line(img=img,
                                                    pt1=getArrowStartPoint(i, radius),
                                                    pt2=getArrowEndPoint(j, radius),
-                                                   color=(255, 0, 255))
+                                                   color=(255, 255, 0))
 
                                 else:
                                     img = cv2.line(img=img,
