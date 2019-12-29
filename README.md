@@ -3,17 +3,39 @@ Tensorflow Model Picture Generator
 RESULT
 -------------
 ![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/80900687_3043525055871819_3720745626112098304_n.jpg)
+
+* * *
+
 ![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/80458048_3043523079205350_242428497014816768_o.jpg)
+
+
+* * *
+
 ![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/80840138_3043527135871611_7671651974021906432_o.jpg)
+
+
+* * *
+
 ![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/81370305_3043547499202908_3713353506359345152_o.jpg)
 
 * * *
 
 ![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/81034221_3043305262560465_40939005495214080_n.jpg)
-![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/80622785_3043523679205290_7629639145098313728_o.jpg)
-![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/81289086_3043547149202943_8828497502484299776_o.jpg)
-![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/80631938_3043527862538205_7708326360460034048_o.jpg)
+
 * * *
+
+![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/80622785_3043523679205290_7629639145098313728_o.jpg)
+
+* * *
+
+![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/80631938_3043527862538205_7708326360460034048_o.jpg)
+
+* * *
+
+![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/81289086_3043547149202943_8828497502484299776_o.jpg)
+
+* * *
+
 Advance preparation
 -------------
 > 1. tensorflow 2.0 ver
