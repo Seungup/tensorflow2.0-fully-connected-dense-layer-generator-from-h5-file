@@ -374,3 +374,62 @@ def model_neurons_position(data, max_num=50, max2min=15):
         else:
             return_list.append(list(data[i]))
     return return_list
+
+def getModelWeights(path):
+    model_data = tf.keras.models.load_model(path)
+    data = model_data.get_weights()
+    
+    return data
+
+
+def evaluate(path, test_images, test_labels, verbose):
+    optimizer = getOptimazer(path)
+
+    model.compile(optimizer=optimizer,
+                  loss='sparse_categorical_crossentropy',
+                  metrics=['accuracy'])
+ 
+    model = tf.keras.models.load_model(path)
+    loss, acc = model.evaluate(test_images,  test_labels, verbose=verbose)
+    return loss, acc
+
+def draw():
+    drawing = False
+    ix,iy = -1,-1
+
+
+    def _draw(event, x,y, flags, param):
+        global ix,iy, drawing, mode
+
+        if event == cv2.EVENT_LBUTTONDOWN:
+            drawing = True 
+            ix, iy = x,y
+
+        elif event == cv2.EVENT_MOUSEMOVE:
+            if drawing == True: 
+                cv2.circle(img,(x,y),5,(255,255,255),-1)
+
+        elif event == cv2.EVENT_LBUTTONUP:
+            drawing = False
+            cv2.circle(img,(x,y),5,(255,255,255),-1)
+
+
+    img = function.getBlankImage(512, 512)
+    cv2.namedWindow('image')
+    cv2.setMouseCallback('image', _draw)
+
+    while True:
+        cv2.imshow('image', img)
+
+        k = cv2.waitKey(1) & 0xFF
+
+        if k == 27:
+            break
+
+    cv2.destroyAllWindows()
+    function.save(img)
+    
+def getMnistData():
+    mnist = keras.datasets.mnist
+    (X_train0, y_train0), (X_test0, y_test0) = mnist.load_data()
+    return (X_train0, y_train0), (X_test0, y_test0)
