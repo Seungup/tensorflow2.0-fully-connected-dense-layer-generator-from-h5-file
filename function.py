@@ -381,8 +381,8 @@ def getLayerList(path):
                 dense_list.append(getData)
     return dense_list
 
-def save(img):
-    cv2.imwrite("saved.png", img)
+def save(img, number):
+    cv2.imwrite(f"saved_{number}.png", img)
     
 def model_neurons_position(data, max_num=130, max2min=30):
     return_list = []
