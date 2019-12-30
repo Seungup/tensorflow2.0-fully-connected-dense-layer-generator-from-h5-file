@@ -1,5 +1,19 @@
 Tensorflow Model Picture Generator
 =============
+What is this?
+-------------
+
+### this is useful program when you want to visualize the h5 model file. this program will be automaticaly generate layers photo.
+
+* * *
+
+Before Enter
+-------------
+## **Currently, only Flatten, Dense, and Dropout are available. and also Sequential model**
+
+* * *
+
+
 RESULT
 -------------
 ![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/80900687_3043525055871819_3720745626112098304_n.jpg)
