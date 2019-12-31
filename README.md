@@ -25,12 +25,6 @@ RESULT
 
 * * *
 
-![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/80840138_3043527135871611_7671651974021906432_o.jpg)
-
-
-* * *
-
-![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/81370305_3043547499202908_3713353506359345152_o.jpg)
 
 * * *
 
@@ -42,11 +36,6 @@ RESULT
 
 * * *
 
-![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/80631938_3043527862538205_7708326360460034048_o.jpg)
-
-* * *
-
-![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/81289086_3043547149202943_8828497502484299776_o.jpg)
 
 * * *
 
