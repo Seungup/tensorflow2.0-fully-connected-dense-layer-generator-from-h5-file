@@ -5,7 +5,7 @@ What is this?
 
 ### this is useful program when you want to visualize the h5 model file. this program will be automaticaly generate layers photo.
 
-## Currently, only Flatten, Dense, and Dropout are available. and also Sequential model
+### Currently, only Flatten, Dense, and Dropout are available. and also Sequential model
 
 * * *
 
