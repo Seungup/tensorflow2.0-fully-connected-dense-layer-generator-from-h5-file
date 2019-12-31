@@ -41,12 +41,12 @@ RESULT
 
 Advance preparation
 -------------
-> tensorflow 2.0
-> CUDA 10.0
-> opencv
-> tqdm
-> h5py
-> matplotlib
+> 1. tensorflow 2.0
+> 2. CUDA 10.0
+> 3. opencv
+> 4. tqdm
+> 5. h5py
+> 6. matplotlib
 
 how to use
 -------------
