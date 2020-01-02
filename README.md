@@ -10,7 +10,8 @@ Advance preparation
 -------------
 > 1. tensorflow 2.0
 > 2. opencv-python
-> 3 numpy
+> 3. numpy
+> 4. h5py
 * * *
 
 RESULT
