@@ -25,16 +25,7 @@ RESULT
 
 * * *
 ## MNIST fully connected dense layer
-![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/80900687_3043525055871819_3720745626112098304_n.jpg)
 ![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/80458048_3043523079205350_242428497014816768_o.jpg)
-
-
-* * *
-
-
-* * *
-## MNIST fully connected dense layer
-![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/81034221_3043305262560465_40939005495214080_n.jpg)
 ![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/80622785_3043523679205290_7629639145098313728_o.jpg)
 
 * * *
