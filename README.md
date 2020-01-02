@@ -64,32 +64,19 @@ def drawingNerons(img, data, radius=1, color=(255, 255, 255)): #here
 ##### File PATH = function.py
 ```python
 def drawingLines(img, data, radius=1):
-    
     values = []
     for now_data in range(len(data)):
         values.append(data[now_data])
-    
-
     for a in range(len(values)):
         if (len(values)-1 >= (a+1)):
-                
                 for i in values[a]:                    
                         for j in values[a+1]:
-
-                                if(a == 0):
-                                    img = cv2.line(img=img,
-                                                   pt1=getArrowStartPoint(i, radius),
-                                                   pt2=getArrowEndPoint(j, radius),
-                                                   color=(255, 255, 0)) #here
-
-                                else:
-                                    img = cv2.line(img=img,
-                                                   pt1=getArrowStartPoint(i, radius),
-                                                   pt2=getArrowEndPoint(j, radius),
-                                                   color=(255, 255, 0)) #here
+                            img = cv2.line(img=img,
+                                           pt1=getArrowStartPoint(i, radius),
+                                           pt2=getArrowEndPoint(j, radius),
+                                           color=(255, 255, 0)) #here
         else:
             pass
-
     return img
 ```
 * * *
@@ -115,13 +102,10 @@ def model_neurons_position(data, max_num=100, max2min=30): #here
 ##### File PATH = function.py
 ```python
 def drawDropoutLine(img, neuron_postion, radius, dense_list):
-    
     location_of_dropout = findDropoutPart(dense_list)
-    
     for i in tqdm(range(len(location_of_dropout)), "Dropout to Dense"):
         new_postion = (neuron_postion[location_of_dropout[i][0]], 
                        neuron_postion[location_of_dropout[i][1]])
-        
         for j in range(len(new_postion[0])):
             img = cv2.line(img=img,
                            pt1= getArrowStartPoint(new_postion[0][j], radius),
