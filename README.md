@@ -5,11 +5,7 @@ What is this?
 
 ### this is useful program when you want to visualize the h5 model file. this program will be automaticaly generate layers photo.
 
-* * *
-
-Before Enter
--------------
-## **Currently, only Flatten, Dense, and Dropout are available. and also Sequential model**
+### Currently, only Flatten, Dense, and Dropout are available. and also Sequential model
 
 * * *
 
@@ -25,12 +21,6 @@ RESULT
 
 * * *
 
-![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/80840138_3043527135871611_7671651974021906432_o.jpg)
-
-
-* * *
-
-![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/81370305_3043547499202908_3713353506359345152_o.jpg)
 
 * * *
 
@@ -42,25 +32,18 @@ RESULT
 
 * * *
 
-![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/80631938_3043527862538205_7708326360460034048_o.jpg)
-
-* * *
-
-![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/81289086_3043547149202943_8828497502484299776_o.jpg)
 
 * * *
 
 Advance preparation
 -------------
-> 1. tensorflow 2.0 ver
-> 2. opencv
-> 3. tqdm
-> 4. h5py
-> 5. matplotlib
+> 1. tensorflow 2.0
+> 2. CUDA 10.0
+> 3. opencv
+> 4. tqdm
+> 5. h5py
+> 6. matplotlib
 
-how to use
--------------
-#### just lunch the .ipny file and click it that's it
 * * *
 When you want to modify code
 -------------
