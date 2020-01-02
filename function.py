@@ -1,5 +1,4 @@
 import tensorflow as tf
-import h5py
 import cv2
 import numpy as np
 from tqdm import tqdm
@@ -68,15 +67,6 @@ def getModelLayersConfigNormalization(file):
     
     return model_layer_config
 
-def getOptimazer(file):
-    try:
-        path = file
-        f = h5py.File(path, 'r')
-        f_keys = list(f.keys())
-        f_keys_keys = list(f[f_keys[1]].keys())
-        return f_keys_keys[0]
-    except:
-        return None
     
 def getLayersInfo(path):
     return_list = []
