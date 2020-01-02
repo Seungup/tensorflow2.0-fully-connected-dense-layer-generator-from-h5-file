@@ -1,11 +1,8 @@
 Tensorflow Model Picture Generator
 =============
-What is this?
--------------
-
-### this is useful program when you want to visualize the h5 model file. this program will be automaticaly generate layers photo.
-
-### Currently, only Flatten, Dense, and Dropout are available. and also Sequential model
+### this is useful program when you want to visualize the h5 model file. 
+### this program will be generate fully connected dense layer.
+### Currently, only Flatten, Dense, and Dropout are available.
 
 * * *
 
@@ -20,10 +17,15 @@ Advance preparation
 
 RESULT
 -------------
-![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/80900687_3043525055871819_3720745626112098304_n.jpg)
+## Fashion MNIST fully connected dense layer
+![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/saved_fashion_mnist_model.png)
 
 * * *
 
+
+* * *
+## MNIST fully connected dense layer
+![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/80900687_3043525055871819_3720745626112098304_n.jpg)
 ![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/80458048_3043523079205350_242428497014816768_o.jpg)
 
 
@@ -31,11 +33,8 @@ RESULT
 
 
 * * *
-
+## MNIST fully connected dense layer
 ![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/81034221_3043305262560465_40939005495214080_n.jpg)
-
-* * *
-
 ![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/80622785_3043523679205290_7629639145098313728_o.jpg)
 
 * * *
