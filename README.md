@@ -10,7 +10,8 @@ Advance preparation
 -------------
 > 1. tensorflow 2.0
 > 2. opencv-python
-> 3 numpy
+> 3. numpy
+> 4. h5py
 * * *
 
 RESULT
@@ -33,12 +34,12 @@ RESULT
 
 When you want to modify code
 -------------
-#### If you want to more big size of result or neurons radius, you can modified to this section
+#### If you want to more big size of result or neurons radius, you can chage here
 
 ##### File PATH = function_test.ipynb
 
 ```python
-img_w =  layers_number * 400
+img_w =  layers_number * 400 #here
 img_h = img_w
 radius = 8
 ```
@@ -48,7 +49,7 @@ radius = 8
 
 ##### File PATH = function.py
 ```python
-def drawingNerons(img, data, radius=1, color=(255, 255, 255)): # here
+def drawingNerons(img, data, radius=1, color=(255, 255, 255)): #here
     for i in data:
         img = cv2.circle(img=img,
                          center=i,
@@ -79,13 +80,13 @@ def drawingLines(img, data, radius=1):
                                     img = cv2.line(img=img,
                                                    pt1=getArrowStartPoint(i, radius),
                                                    pt2=getArrowEndPoint(j, radius),
-                                                   color=(255, 255, 0)) # here
+                                                   color=(255, 255, 0)) #here
 
                                 else:
                                     img = cv2.line(img=img,
                                                    pt1=getArrowStartPoint(i, radius),
                                                    pt2=getArrowEndPoint(j, radius),
-                                                   color=(255, 255, 0)) # here
+                                                   color=(255, 255, 0)) #here
         else:
             pass
 
@@ -94,11 +95,10 @@ def drawingLines(img, data, radius=1):
 * * *
 #### When the number of neurons rises above a certain level, the computer's performance slows down the results. 
 #### Thus, by default, if more than 100 nodes exist inside a single layer, they are forced to switch to 30.
-#### If you want to chage that value, you can chage here
 
 ##### File PATH = function.py
 ```python
-def model_neurons_position(data, max_num=130, max2min=30): #here
+def model_neurons_position(data, max_num=100, max2min=30): #here
     return_list = []
     for i in range(len(data)):
         if(data[i][0] > max_num):
@@ -126,6 +126,6 @@ def drawDropoutLine(img, neuron_postion, radius, dense_list):
             img = cv2.line(img=img,
                            pt1= getArrowStartPoint(new_postion[0][j], radius),
                            pt2= getArrowEndPoint(new_postion[1][j], radius),
-                           color=(255, 0, 255)) # here
+                           color=(255, 0, 255)) #here
     return img
 ```
