@@ -1,4 +1,4 @@
-Tensorflow Model Picture Generator
+fully connected dense layer generator from h5 file
 =============
 ### this is useful program when you want to visualize the h5 model file. 
 ### this program will be generate fully connected dense layer.
@@ -10,9 +10,7 @@ Advance preparation
 -------------
 > 1. tensorflow 2.0
 > 2. opencv-python
-> 3. tqdm
-> 4. h5py
-> 5. numpy
+> 3 numpy
 * * *
 
 RESULT
