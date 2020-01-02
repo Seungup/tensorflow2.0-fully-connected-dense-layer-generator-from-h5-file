@@ -61,7 +61,6 @@ radius = 8
 #### If you want to change the nurens color, you can change here.
 
 ##### File PATH = function.py
-##### LINE NUMBER = 288
 ```python
 def drawingNerons(img, data, radius=1, color=(255, 255, 255)): # here
     for i in data:
@@ -76,7 +75,6 @@ def drawingNerons(img, data, radius=1, color=(255, 255, 255)): # here
 #### If you want to change the Dense to Dense line color, you can change here.
 
 ##### File PATH = function.py
-##### LINE NUMBER = 312
 ```python
 def drawingLines(img, data, radius=1):
     
@@ -109,11 +107,10 @@ def drawingLines(img, data, radius=1):
 ```
 * * *
 #### When the number of neurons rises above a certain level, the computer's performance slows down the results. 
-#### Thus, by default, if more than 130 nodes exist inside a single layer, they are forced to switch to 30.
+#### Thus, by default, if more than 100 nodes exist inside a single layer, they are forced to switch to 30.
 #### If you want to chage that value, you can chage here
 
 ##### File PATH = function.py
-##### LINE NUMBER = 387
 ```python
 def model_neurons_position(data, max_num=130, max2min=30): #here
     return_list = []
@@ -130,7 +127,6 @@ def model_neurons_position(data, max_num=130, max2min=30): #here
 #### If you want to chage Dropout to Dense line color you can chage here
 
 ##### File PATH = function.py
-##### LINE NUMBER = 472
 ```python
 def drawDropoutLine(img, neuron_postion, radius, dense_list):
     
