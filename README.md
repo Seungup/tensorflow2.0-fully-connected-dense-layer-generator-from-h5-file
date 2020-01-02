@@ -9,6 +9,14 @@ What is this?
 
 * * *
 
+Advance preparation
+-------------
+> 1. tensorflow 2.0
+> 2. opencv-python
+> 3. tqdm
+> 4. h5py
+> 5. numpy
+* * *
 
 RESULT
 -------------
@@ -35,13 +43,6 @@ RESULT
 
 * * *
 
-Advance preparation
--------------
-> 1. tensorflow 2.0
-> 2. opencv
-> 4. tqdm
-> 5. h5py
-* * *
 When you want to modify code
 -------------
 #### If you want to more big size of result or neurons radius, you can modified to this section
