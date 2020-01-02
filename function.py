@@ -316,7 +316,7 @@ def save(img, number):
     cv2.imwrite(f"saved_{number}.png", img)
 
 
-def model_neurons_position(data, max_num=130, max2min=30):
+def model_neurons_position(data, max_num=100, max2min=30):
 
     return_list = []
     for i in range(len(data)):
