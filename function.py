@@ -1,7 +1,7 @@
 import tensorflow as tf
 import cv2
 import numpy as np
-from tqdm import tqdm
+import h5py
 
 def getModelConfig(file):
     return tf.keras.models.load_model(file).get_config()
@@ -67,6 +67,12 @@ def getModelLayersConfigNormalization(file):
     
     return model_layer_config
 
+def getOptimazer(file):
+    path = file
+    f = h5py.File(path, 'r')
+    f_keys = list(f.keys())
+    f_keys_keys = list(f[f_keys[1]].keys())
+    return f_keys_keys[0] 
     
 def getLayersInfo(path):
     return_list = []
@@ -148,11 +154,12 @@ def getLayersInfo(path):
                     print("XXXXXXXXXXXX")
                     return_list.append(None)
     finally:
-        return return_list
+        return return_list 
+
     
     
-def getBlankImage(height, width, dimension=3):
-    return np.zeros((height, width, dimension), np.uint8)
+def getBlankImage(height, width):
+    return np.zeros((height, width, 3), np.uint8)
 
 def showImage(img):
     cv2.imshow('img', img)
@@ -343,7 +350,7 @@ def drawDropoutLine(img, neuron_postion, radius, dense_list):
     
     location_of_dropout = findDropoutPart(dense_list)
     
-    for i in tqdm(range(len(location_of_dropout)), "Dropout to Dense"):
+    for i in range(len(location_of_dropout)):
         new_postion = (neuron_postion[location_of_dropout[i][0]], 
                        neuron_postion[location_of_dropout[i][1]])
         
@@ -378,7 +385,7 @@ def drawDenseLine(img, neuron_postion, radius, dense_list):
     
     location_of_dense = findDensePart(dense_list)
     
-    for i in tqdm(range(len(location_of_dense)), "Dense to Dense"):
+    for i in range(len(location_of_dense)):
         first = location_of_dense[i][0]
         second = location_of_dense[i][1]
         
