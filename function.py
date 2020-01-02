@@ -44,10 +44,6 @@ def getModelLayersConfig(file):
     return model_config_list
     
     
-def showModelSummary(file):
-    tf.keras.models.load_model(file).summary()
-    
-    
 def getModelLayersConfigNormalization(file):
     model_layer_config = getModelLayersConfig(file)
     
@@ -82,69 +78,6 @@ def getOptimazer(file):
         return f_keys_keys[0]
     except:
         return None
-
-def printLayer(path):
-    
-    layers_name = getLayersName(path) 
-    data = getModelLayersConfigNormalization(path)
-    optimazier = getOptimazer(path)
-    
-    print(f"Optimazer : {optimazier}\n")
-    for i in range(len(data)):
-
-        init_new = 0
-
-        print(f"Layer_{i} | Name : {layers_name[i]}")
-
-        if (i == 0):
-            init = 1
-            batch_input_shape = data[i][2][1]
-
-            for j in batch_input_shape:
-                if (j == None):
-                    j = 1
-                init = init * j 
-
-            print(f"Layer_{i} | input_shape : {batch_input_shape}")
-            print(f"Layer_{i} | output_shape : {init}")
-            print(f"Layer_{i} | Paragms : {init_new}\n")
-
-
-        else:
-
-            if(data[i][3][0] == "units"):
-
-                nowlayer = i
-
-                neruons = data[i][3][1]
-                init_new = init * data[i][3][1] + data[i][3][1]
-                init = data[i][3][1] # init update
-
-                print(f"Layer_{i} | Neurons : {neruons}")
-                print(f"Layer_{i} | Paragms : {init_new}\n")
-
-
-            elif(data[i][3][0] == "rate"):
-
-                rate = data[i][3][1] * 100
-
-                print(f"Layer_{i} | Rate : {rate}%")
-                print(f"Layer_{i} | Paragms : {init_new}\n")
-
-
-
-            elif(data[i][3][0] == "activation"):
-
-                funtion_name = data[i][3][1]
-
-                print(f"Layer_{i} | Funtion : {funtion_name}")
-                print(f"Layer_{i} | Paragms : {init_new}\n")
-
-
-            else:
-                # unknow part need update this part
-                print("XXXXXXXXXXXX")
-                print(f"Layer_{i} | {data[i][3][0]} : {data[i][3][1]}")
                 
                 
 def getLayersInfo(path):
@@ -384,7 +317,7 @@ def getLayerList(path):
 def save(img, number):
     cv2.imwrite(f"saved_{number}.png", img)
     
-def model_neurons_position(data, max_num=130, max2min=30):
+def model_neurons_position(data, max_num=120, max2min=15):
     return_list = []
     for i in range(len(data)):
         if(data[i][0] > max_num):
@@ -401,58 +334,6 @@ def getModelWeights(path):
     
     return data
 
-
-def evaluate(path, test_images, test_labels, verbose):
-    optimizer = getOptimazer(path)
-    model = tf.keras.models.load_model(path)
-    model.compile(optimizer=optimizer,
-                  loss='sparse_categorical_crossentropy',
-                  metrics=['accuracy'])
- 
-    
-    loss, acc = model.evaluate(test_images,  test_labels, verbose=verbose)
-    return loss, acc
-
-def draw():
-    drawing = False
-    ix,iy = -1,-1
-
-
-    def _draw(event, x,y, flags, param):
-        global ix,iy, drawing, mode
-
-        if event == cv2.EVENT_LBUTTONDOWN:
-            drawing = True 
-            ix, iy = x,y
-
-        elif event == cv2.EVENT_MOUSEMOVE:
-            if drawing == True: 
-                cv2.circle(img,(x,y),5,(255,255,255),-1)
-
-        elif event == cv2.EVENT_LBUTTONUP:
-            drawing = False
-            cv2.circle(img,(x,y),5,(255,255,255),-1)
-
-
-    img = function.getBlankImage(512, 512)
-    cv2.namedWindow('image')
-    cv2.setMouseCallback('image', _draw)
-
-    while True:
-        cv2.imshow('image', img)
-
-        k = cv2.waitKey(1) & 0xFF
-
-        if k == 27:
-            break
-
-    cv2.destroyAllWindows()
-    function.save(img)
-    
-def getMnistData():
-    mnist = tf.keras.datasets.mnist
-    (X_train0, y_train0), (X_test0, y_test0) = mnist.load_data()
-    return (X_train0, y_train0), (X_test0, y_test0)
 
 def findDropoutPart(dense_list):
     a = []
