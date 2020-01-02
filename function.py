@@ -43,7 +43,10 @@ def getModelLayersConfig(file):
 
     return model_config_list
     
+<<<<<<< HEAD
     
+=======
+>>>>>>> 47e1819fd298902a0a48a9bfe4c317e387a4a907
 def getModelLayersConfigNormalization(file):
     model_layer_config = getModelLayersConfig(file)
     
@@ -64,8 +67,7 @@ def getModelLayersConfigNormalization(file):
 
     for data in NoneType_index:
         i, j, removeData = data
-        model_layer_config[i].remove(removeData)
-    # <-- FINISH -->    
+        model_layer_config[i].remove(removeData) 
     
     return model_layer_config
 
@@ -77,8 +79,12 @@ def getOptimazer(file):
         f_keys_keys = list(f[f_keys[1]].keys())
         return f_keys_keys[0]
     except:
+<<<<<<< HEAD
         return None
                 
+=======
+        return None                
+>>>>>>> 47e1819fd298902a0a48a9bfe4c317e387a4a907
                 
 def getLayersInfo(path):
     return_list = []
@@ -316,8 +322,13 @@ def getLayerList(path):
 
 def save(img, number):
     cv2.imwrite(f"saved_{number}.png", img)
+<<<<<<< HEAD
     
 def model_neurons_position(data, max_num=120, max2min=15):
+=======
+
+def model_neurons_position(data, max_num=130, max2min=30):
+>>>>>>> 47e1819fd298902a0a48a9bfe4c317e387a4a907
     return_list = []
     for i in range(len(data)):
         if(data[i][0] > max_num):
@@ -333,8 +344,12 @@ def getModelWeights(path):
     data = model_data.get_weights()
     
     return data
+<<<<<<< HEAD
 
 
+=======
+ 
+>>>>>>> 47e1819fd298902a0a48a9bfe4c317e387a4a907
 def findDropoutPart(dense_list):
     a = []
     for i in range(len(dense_list)):
