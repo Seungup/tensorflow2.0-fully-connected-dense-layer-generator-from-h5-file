@@ -1,33 +1,31 @@
 Tensorflow Model Picture Generator
 =============
-What is this?
--------------
-
-### this is useful program when you want to visualize the h5 model file. this program will be automaticaly generate layers photo.
-
-### Currently, only Flatten, Dense, and Dropout are available. and also Sequential model
+### this is useful program when you want to visualize the h5 model file. 
+### this program will be generate fully connected dense layer.
+### Currently, only Flatten, Dense, and Dropout are available.
 
 * * *
 
+Advance preparation
+-------------
+> 1. tensorflow 2.0
+> 2. opencv-python
+> 3. tqdm
+> 4. h5py
+> 5. numpy
+* * *
 
 RESULT
 -------------
-![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/80900687_3043525055871819_3720745626112098304_n.jpg)
+## Fashion MNIST fully connected dense layer
+![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/saved_fashion_mnist_model.png)
 
 * * *
 
+
+* * *
+## MNIST fully connected dense layer
 ![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/80458048_3043523079205350_242428497014816768_o.jpg)
-
-
-* * *
-
-
-* * *
-
-![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/81034221_3043305262560465_40939005495214080_n.jpg)
-
-* * *
-
 ![sample](https://github.com/Seungup/tensorflow-model-picture-generator/blob/master/samples/80622785_3043523679205290_7629639145098313728_o.jpg)
 
 * * *
@@ -35,16 +33,6 @@ RESULT
 
 * * *
 
-Advance preparation
--------------
-> 1. tensorflow 2.0
-> 2. CUDA 10.0
-> 3. opencv
-> 4. tqdm
-> 5. h5py
-> 6. matplotlib
-
-* * *
 When you want to modify code
 -------------
 #### If you want to more big size of result or neurons radius, you can modified to this section
@@ -61,7 +49,6 @@ radius = 8
 #### If you want to change the nurens color, you can change here.
 
 ##### File PATH = function.py
-##### LINE NUMBER = 288
 ```python
 def drawingNerons(img, data, radius=1, color=(255, 255, 255)): # here
     for i in data:
@@ -76,7 +63,6 @@ def drawingNerons(img, data, radius=1, color=(255, 255, 255)): # here
 #### If you want to change the Dense to Dense line color, you can change here.
 
 ##### File PATH = function.py
-##### LINE NUMBER = 312
 ```python
 def drawingLines(img, data, radius=1):
     
@@ -109,11 +95,10 @@ def drawingLines(img, data, radius=1):
 ```
 * * *
 #### When the number of neurons rises above a certain level, the computer's performance slows down the results. 
-#### Thus, by default, if more than 130 nodes exist inside a single layer, they are forced to switch to 30.
+#### Thus, by default, if more than 100 nodes exist inside a single layer, they are forced to switch to 30.
 #### If you want to chage that value, you can chage here
 
 ##### File PATH = function.py
-##### LINE NUMBER = 387
 ```python
 def model_neurons_position(data, max_num=130, max2min=30): #here
     return_list = []
@@ -130,7 +115,6 @@ def model_neurons_position(data, max_num=130, max2min=30): #here
 #### If you want to chage Dropout to Dense line color you can chage here
 
 ##### File PATH = function.py
-##### LINE NUMBER = 472
 ```python
 def drawDropoutLine(img, neuron_postion, radius, dense_list):
     
