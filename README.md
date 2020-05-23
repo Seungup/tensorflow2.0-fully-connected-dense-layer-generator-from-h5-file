@@ -1,6 +1,6 @@
 fully connected dense layer generator from h5 file
 =============
-### this is useful program when you want to visualize the h5 model file. 
+### this is an useful program when you want to visualize the h5 model file. 
 ### this program will be generate fully connected dense layer.
 ### Currently, only Flatten, Dense, and Dropout are available.
 
